@@ -15,25 +15,30 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             Spacer(flex: 2,),
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  weekday(day.weekday),
-                  style: const TextStyle(
-                    decoration: TextDecoration.none,
-                    fontFamily: 'Breath',
-                    color: Colors.white,
-                    fontSize: 35,
-                  ),
-                ),
-                Text(
-                  '${day.month} ${day.day}',
-                  style: const TextStyle(
-                    decoration: TextDecoration.none,
-                    //fontFamily: 'Breath',
-                    color: Colors.white,
-                    fontSize: 25,
-                  ),
+                Column(
+                  children: [
+                    Text(
+                      weekday(day.weekday),
+                      style: const TextStyle(
+                        decoration: TextDecoration.none,
+                        fontFamily: 'Breath',
+                        color: Colors.white,
+                        fontSize: 35,
+                      ),
+                    ),
+                    Text(
+                      '${month(day.month)} ${day.day}',
+                      style: const TextStyle(
+                        decoration: TextDecoration.none,
+                        //fontFamily: 'Breath',
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
