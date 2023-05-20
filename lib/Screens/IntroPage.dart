@@ -16,6 +16,7 @@ class Intro extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
+              Spacer(),
               Text(
                 "TaleHub",
                 style: TextStyle(
@@ -24,14 +25,15 @@ class Intro extends StatelessWidget {
                     fontFamily: 'Agraham',
                     fontSize: 55),
               ),
+              Spacer(),
               Text(
-                "Explore sensational cocktail recipes and elevate your drinking experience.",
+                "Elevate your drinking experience.",
                 style: TextStyle(
                     decoration: TextDecoration.none,
                     color: Colors.white,
                     fontFamily: 'Breath',
-                    fontSize: 25),
-              )
+                    fontSize: 20),
+              ),
             ],
           ),
         ));
