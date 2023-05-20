@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:tale_hub/Components/RoundedButton.dart';
+import 'package:tale_hub/Screens/HomeScreen.dart';
 
 class Intro extends StatelessWidget {
   const Intro({Key? key}) : super(key: key);
@@ -48,7 +49,10 @@ class Intro extends StatelessWidget {
               ),
               RoundedButton(
                 text: 'Shake Things Up',
-                press: () {},
+                press: () {
+                  Navigator.pushReplacement(
+                      context, MaterialPageRoute(builder: (context) => Home()));
+                },
                 color: Colors.white,
                 textColor: Colors.black,
                 length: 0.85,
