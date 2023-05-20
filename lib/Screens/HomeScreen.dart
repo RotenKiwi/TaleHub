@@ -26,9 +26,21 @@ class Home extends StatelessWidget {
                     children: [
                       DayDate(day: day),
                       const Spacer(),
-                      SurpriseMeBtn(),
+                      const SurpriseMeBtn(),
                     ],
                   ),
+                  const SizedBox(
+                    height: 45,
+                  ),
+                  Row(
+                    children: [
+                      Spacer(),
+                      CustomRadioButton(text: 'Cocktail',),
+                      Spacer(),
+                      CustomRadioButton(text: 'Mocktail',),
+                      Spacer(),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -43,6 +55,41 @@ class Home extends StatelessWidget {
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomRadioButton extends StatelessWidget {
+  final String text;
+  final String index;
+  const CustomRadioButton({
+    super.key, required this.text, required this.index,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: const BorderRadius.all(Radius.circular(25)),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white, width: 1.5),
+          borderRadius: const BorderRadius.all(Radius.circular(25)),
+        ),
+        child: TextButton(
+          onPressed: () {},
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+            child: Text(
+              text,
+              style: TextStyle(
+                fontFamily: 'Inter',
+                fontSize: 20,
+                color: Colors.white,
+              ),
+            ),
+          ),
         ),
       ),
     );
