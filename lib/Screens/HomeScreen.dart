@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tale_hub/Tools/palette.dart';
 import 'package:tale_hub/Tools/weekday.dart';
 
+import '../Components/DayDate.dart';
+
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -18,28 +20,7 @@ class Home extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  children: [
-                    Text(
-                      weekday(day.weekday),
-                      style: const TextStyle(
-                        decoration: TextDecoration.none,
-                        fontFamily: 'Breath',
-                        color: Colors.white,
-                        fontSize: 35,
-                      ),
-                    ),
-                    Text(
-                      '${month(day.month)} ${day.day}',
-                      style: const TextStyle(
-                        decoration: TextDecoration.none,
-                        //fontFamily: 'Breath',
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ],
-                ),
+                DayDate(day: day),
               ],
             ),
             Spacer(flex: 7,),
