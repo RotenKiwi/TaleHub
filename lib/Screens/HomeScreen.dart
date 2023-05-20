@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tale_hub/Tools/palette.dart';
-import 'package:tale_hub/Tools/weekday.dart';
-
 import '../Components/DayDate.dart';
+import '../Components/SurpriseMeBtn.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -13,53 +12,37 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: bgColor,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: Column(
-            children: [
-              const Spacer(
-                flex: 2,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          children: [
+            const Spacer(
+              flex: 2,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Column(
                 children: [
-                  DayDate(day: day),
-                  const Spacer(),
-                  Container(
-                    color: secColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          const Text(
-                            'Surprise',
-                            style: TextStyle(
-                              decoration: TextDecoration.none,
-                              color: Colors.white,
-                              fontFamily: 'Breath',
-                              fontSize: 20,
-                            ),
-                          ),
-                          IconButton(onPressed: (){}, icon: const Icon(Icons.change_circle_outlined), iconSize: 60,)
-                        ],
-                      ),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      DayDate(day: day),
+                      const Spacer(),
+                      SurpriseMeBtn(),
+                    ],
                   ),
-                  const Spacer(),
                 ],
               ),
-              const Spacer(
-                flex: 7,
+            ),
+            const Spacer(
+              flex: 15,
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(
+                width: double.infinity,
+                color: navColor,
               ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  height: 30,
-                  color: navColor,
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
