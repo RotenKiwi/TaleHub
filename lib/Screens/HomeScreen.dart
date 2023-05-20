@@ -3,9 +3,16 @@ import 'package:tale_hub/Tools/palette.dart';
 import '../Components/DayDate.dart';
 import '../Components/SurpriseMeBtn.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+String drink = 'cokctail';
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     var day = DateTime.now();
@@ -35,9 +42,25 @@ class Home extends StatelessWidget {
                   Row(
                     children: [
                       Spacer(),
-                      CustomRadioButton(text: 'Cocktail',),
+                      CustomRadioButton(
+                        text: 'Cocktail',
+                        index: 'cocktail',
+                        press: () {
+                          setState(() {
+                            drink = 'cocktail';
+                          });
+                        },
+                      ),
                       Spacer(),
-                      CustomRadioButton(text: 'Mocktail',),
+                      CustomRadioButton(
+                        text: 'Mocktail',
+                        index: 'mocktail',
+                        press: () {
+                          setState(() {
+                            drink = 'mocktail';
+                          });
+                        },
+                      ),
                       Spacer(),
                     ],
                   )
@@ -64,29 +87,37 @@ class Home extends StatelessWidget {
 class CustomRadioButton extends StatelessWidget {
   final String text;
   final String index;
+  final Function() press;
+
   const CustomRadioButton({
-    super.key, required this.text, required this.index,
+    super.key,
+    required this.text,
+    required this.index,
+    required this.press,
   });
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(25)),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 1.5),
-          borderRadius: const BorderRadius.all(Radius.circular(25)),
-        ),
-        child: TextButton(
-          onPressed: () {},
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
-            child: Text(
-              text,
-              style: TextStyle(
-                fontFamily: 'Inter',
-                fontSize: 20,
-                color: Colors.white,
+      child: InkWell(
+        child: Container(
+          decoration: BoxDecoration(
+            color: (drink == index) ? Colors.white : bgColor,
+            border: Border.all(color: Colors.white, width: 1.5),
+            borderRadius: const BorderRadius.all(Radius.circular(25)),
+          ),
+          child: TextButton(
+            onPressed: press,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 20,
+                  color: (drink == index) ? bgColor : Colors.white,
+                ),
               ),
             ),
           ),
