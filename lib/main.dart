@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/Screens/IntroPage.dart';
+import 'package:tale_hub/Screens/IntroPage.dart';
 
 void main() {
   runApp(const MaterialApp(
