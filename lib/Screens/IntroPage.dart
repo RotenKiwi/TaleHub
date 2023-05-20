@@ -34,6 +34,7 @@ class Intro extends StatelessWidget {
                     fontFamily: 'Breath',
                     fontSize: 20),
               ),
+              SizedBox(height: 30,)
             ],
           ),
         ));
