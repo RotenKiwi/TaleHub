@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tale_hub/Tools/palette.dart';
 import 'package:tale_hub/Tools/weekday.dart';
 
 class Home extends StatelessWidget {
@@ -7,10 +8,13 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var day = DateTime.now().weekday;
-    return Column(
-      children: [
-        Text(weekday(day))
-      ],
+    return Container(
+      color: bgColor,
+      child: Column(
+        children: [
+          Text(weekday(day), style: TextStyle(decoration: TextDecoration.none),),
+        ],
+      ),
     );
   }
 }
