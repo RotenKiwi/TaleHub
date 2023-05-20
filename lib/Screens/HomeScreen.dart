@@ -7,13 +7,46 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var day = DateTime.now().weekday;
+    var day = DateTime.now();
     return Container(
       color: bgColor,
-      child: Column(
-        children: [
-          Text(weekday(day), style: TextStyle(decoration: TextDecoration.none),),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: Column(
+          children: [
+            Spacer(flex: 2,),
+            Column(
+              children: [
+                Text(
+                  weekday(day.weekday),
+                  style: const TextStyle(
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Breath',
+                    color: Colors.white,
+                    fontSize: 35,
+                  ),
+                ),
+                Text(
+                  '${day.month} ${day.day}',
+                  style: const TextStyle(
+                    decoration: TextDecoration.none,
+                    //fontFamily: 'Breath',
+                    color: Colors.white,
+                    fontSize: 25,
+                  ),
+                ),
+              ],
+            ),
+            Spacer(flex: 7,),
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 30,
+                color: navColor,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
