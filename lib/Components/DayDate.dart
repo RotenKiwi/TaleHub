@@ -19,7 +19,7 @@ class DayDate extends StatelessWidget {
             decoration: TextDecoration.none,
             fontFamily: 'Breath',
             color: Colors.white,
-            fontSize: 35,
+            fontSize: 40,
           ),
         ),
         Text(
@@ -28,7 +28,7 @@ class DayDate extends StatelessWidget {
             decoration: TextDecoration.none,
             //fontFamily: 'Breath',
             color: Colors.white,
-            fontSize: 20,
+            fontSize: 25,
           ),
         ),
       ],

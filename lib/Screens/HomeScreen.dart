@@ -10,28 +10,56 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var day = DateTime.now();
-    return Container(
-      color: bgColor,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Column(
-          children: [
-            Spacer(flex: 2,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                DayDate(day: day),
-              ],
-            ),
-            Spacer(flex: 7,),
-            Expanded(
-              flex: 1,
-              child: Container(
-                height: 30,
-                color: navColor,
+    return Scaffold(
+      body: Container(
+        color: bgColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Column(
+            children: [
+              const Spacer(
+                flex: 2,
               ),
-            )
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  DayDate(day: day),
+                  const Spacer(),
+                  Container(
+                    color: secColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Surprise',
+                            style: TextStyle(
+                              decoration: TextDecoration.none,
+                              color: Colors.white,
+                              fontFamily: 'Breath',
+                              fontSize: 20,
+                            ),
+                          ),
+                          IconButton(onPressed: (){}, icon: const Icon(Icons.change_circle_outlined), iconSize: 60,)
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                ],
+              ),
+              const Spacer(
+                flex: 7,
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  height: 30,
+                  color: navColor,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
