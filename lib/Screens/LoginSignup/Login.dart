@@ -26,7 +26,7 @@ class _loginState extends State<login> {
           children: [
             const Spacer(),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40.0),
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: Text(
                 "HI !",
                 style: TextStyle(
@@ -40,22 +40,11 @@ class _loginState extends State<login> {
             ),
             ClipRRect(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
                 child: Column(
                   children: [
-                    formField(
-                      text: 'Email',
-                      horizontalPadding: 10.0,
-                      fontSize: 25,
-                      onChanged: (String) {},
-                      password: false,
-                    ),
-                    formField(
-                        text: 'Password',
-                        horizontalPadding: 10.0,
-                        fontSize: 25,
-                        onChanged: (String) {},
-                        password: true)
+                    textfield(text: 'Email', isPassword: false, onchanged: (value){}),
+                    textfield(text: 'Password', isPassword: true, onchanged: (value){}),
                   ],
                 ),
               ),

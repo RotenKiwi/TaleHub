@@ -1,45 +1,44 @@
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 
-class formField extends StatelessWidget {
+class textfield extends StatelessWidget {
   final String text;
+  final bool isPassword;
+  final Function(String) onchanged;
 
-  //final Color textColor;
-  final double horizontalPadding;
-  final double fontSize;
-  final Function(String) onChanged;
-  final bool password;
-
-  const formField({
+  const textfield({
     super.key,
     required this.text,
-    //required this.textColor,
-    required this.horizontalPadding,
-    required this.fontSize,
-    required this.onChanged, required this.password,
+    required this.isPassword, required this.onchanged,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 15),
-      child: TextFormField(
-        obscureText: password,
-        onChanged: onChanged,
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(20.0),
-            ),
-          ),
-          hintText: text,
-          hintStyle: TextStyle(
-            //color: textColor,
-            color: Colors.white,
-            fontSize: fontSize,
-            fontFamily: 'Poppins',
-          ),
+      padding: EdgeInsets.all(15.0),
+      child: TextField(
+        onChanged: onchanged,
+        style: TextStyle(
+          color: Colors.white,
         ),
+        obscureText: isPassword,
+        //obscuringCharacter: '%',
+        decoration: InputDecoration(
+            hintText: text,
+            hintStyle: TextStyle(
+              color: Colors.white,
+              //fontWeight: FontWeight.w500,
+              fontStyle: FontStyle.italic,
+              fontSize: 25.0,
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20.0),
+              borderSide: BorderSide(
+                color: Colors.white,
+                width: 1,
+                style: BorderStyle.solid,
+              ),
+            )),
       ),
     );
   }
