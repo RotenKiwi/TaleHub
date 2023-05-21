@@ -4,16 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:tale_hub/Components/RoundedButton.dart';
 import 'package:tale_hub/Components/formField.dart';
 
-import 'SignUp.dart';
-
-class login extends StatefulWidget {
-  const login({Key? key}) : super(key: key);
+class signup extends StatefulWidget {
+  const signup({Key? key}) : super(key: key);
 
   @override
-  State<login> createState() => _loginState();
+  State<signup> createState() => _signupState();
 }
 
-class _loginState extends State<login> {
+class _signupState extends State<signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +31,7 @@ class _loginState extends State<login> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: Text(
-                "HI !",
+                "SIGNUP",
                 style: TextStyle(
                   fontSize: 65,
                   fontFamily: 'Breath',
@@ -55,6 +53,19 @@ class _loginState extends State<login> {
                     child: Column(
                       //crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 7.0),
+                          child: Text(
+                            "Looks like you don't have an account. Let's create a new account for you.",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Breath',
+                              decoration: TextDecoration.none,
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
                         textfield(
                             text: 'Email',
                             isPassword: false,
@@ -66,36 +77,17 @@ class _loginState extends State<login> {
                         const SizedBox(
                           height: 20,
                         ),
-                        RoundedButton(
-                            text: 'Continue',
-                            press: () {},
-                            color: Colors.greenAccent,
-                            textColor: Colors.white,
-                            length: 0.9),
-                        SizedBox(
-                          height: 30,
-                        ),
                         Row(
                           children: [
-                            const Text(
-                              "  Don't Have an Account?   ",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Breath',
-                                decoration: TextDecoration.none,
-                                color: Colors.white,
-                              ),
-                              textAlign: TextAlign.start,
-                            ),
-                            TextButton(
-                              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>signup()));},
+                            Container(
                               child: const Text(
-                                "Sign Up",
+                                "By selecting Agree and Continue below,\nI agree to Terms of Service and Privacy\nPolicy.",
+                                softWrap: true,
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'Breath',
                                   decoration: TextDecoration.none,
-                                  color: Colors.greenAccent,
+                                  color: Colors.white,
                                 ),
                                 textAlign: TextAlign.start,
                               ),
@@ -105,6 +97,12 @@ class _loginState extends State<login> {
                         SizedBox(
                           height: 20,
                         ),
+                        RoundedButton(
+                            text: 'Agree & Continue',
+                            press: () {},
+                            color: Colors.greenAccent,
+                            textColor: Colors.white,
+                            length: 0.9),
                         // TextButton(
                         //   onPressed: () {},
                         //   child: const Text(
