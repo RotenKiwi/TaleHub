@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tale_hub/Tools/palette.dart';
 import '../Components/DayDate.dart';
+import '../Components/DrinkCard.dart';
 import '../Components/SurpriseMeBtn.dart';
 import '../Components/customRadioButton.dart';
 import 'package:tale_hub/Supabase/SupabaseHelper.dart';
@@ -26,11 +27,11 @@ class _HomeState extends State<Home> {
             const Spacer(
               flex: 2,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Column(
-                children: [
-                  Row(
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       DayDate(day: day),
@@ -40,90 +41,49 @@ class _HomeState extends State<Home> {
                           ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 45,
-                  ),
-                  Row(
-                    children: [
-                      Spacer(),
-                      CustomRadioButton(
-                        text: 'Cocktail',
-                        index: 'cocktail',
-                        press: () {
-                          setState(() {
-                            drink = 'cocktail';
-                          });
-                        },
-                        group: drink,
-                      ),
-                      Spacer(),
-                      CustomRadioButton(
-                        text: 'Mocktail',
-                        index: 'mocktail',
-                        press: () {
-                          setState(() {
-                            drink = 'mocktail';
-                          });
-                        },
-                        group: drink,
-                      ),
-                      Spacer(),
-                    ],
-                  ),
-                  // Wrap(
-                  //   children: [
-                  //     Container(
-                  //       child: ListView.builder(
-                  //         scrollDirection: Axis.horizontal,
-                  //           itemCount: itemCount,
-                  //           itemBuilder: (context, index) {
-                  //             return Padding(
-                  //               padding: EdgeInsets.all(8.0),
-                  //               child: Container(
-                  //                 height: 50,
-                  //                 width: 50,
-                  //                 color: Colors.pink,
-                  //               ),
-                  //             );
-                  //           }),
-                  //       height: 100,
-                  //       width: 300,
-                  //     ),
-                  //   ]
-                  // ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 45.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                      child: Container(
-                        height: 485,
-                        width: 360,
-                        child: Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            Image(
-                              image: NetworkImage(Cocktails[0]['image_url']),
-                              fit: BoxFit.fill,
-                            ),
-                            Positioned(
-                              bottom: 20,
-                              left: 20,
-                              child: Text(
-                                Cocktails[0]['name'],
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Agraham',
-                                  fontSize: 30,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                ),
+                const SizedBox(
+                  height: 45,
+                ),
+                Row(
+                  children: [
+                    Spacer(),
+                    CustomRadioButton(
+                      text: 'Cocktail',
+                      index: 'cocktail',
+                      press: () {
+                        setState(() {
+                          drink = 'cocktail';
+                        });
+                      },
+                      group: drink,
                     ),
-                  ),
-                ],
-              ),
+                    Spacer(),
+                    CustomRadioButton(
+                      text: 'Mocktail',
+                      index: 'mocktail',
+                      press: () {
+                        setState(() {
+                          drink = 'mocktail';
+                        });
+                      },
+                      group: drink,
+                    ),
+                    Spacer(),
+                  ],
+                ),
+                Container(
+                  height: 500,
+                  width: 400,
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.horizontal,
+                      itemCount: 2,
+                      itemBuilder: (context, index) {
+                        return DrinkCard(index: index,);
+                      }),
+                ),
+              ],
             ),
             const Spacer(
               flex: 1,
