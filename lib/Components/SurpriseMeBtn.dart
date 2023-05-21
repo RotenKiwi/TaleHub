@@ -1,4 +1,7 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:tale_hub/Screens/DrinkDetails.dart';
+import 'package:tale_hub/Supabase/SupabaseHelper.dart';
 import '../Tools/palette.dart';
 
 class SurpriseMeBtn extends StatelessWidget {
@@ -13,7 +16,10 @@ class SurpriseMeBtn extends StatelessWidget {
       child: Container(
         color: secColor,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            int randomIndex = Random().nextInt(drinkCount);
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>DrinkDetails(index: randomIndex,)));
+          },
           child: const Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             child: Text(
