@@ -42,7 +42,7 @@ Future<void> readData() async {
   // print(description);
   // print(image_url);
   //print(Mocktails[0]['image_url']);
-  // print(cocktails);
+   print(Cocktails);
   // print('----------------------------');
   // print(mocktails);
 }

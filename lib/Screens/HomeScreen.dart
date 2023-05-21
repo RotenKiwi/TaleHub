@@ -98,12 +98,24 @@ class _HomeState extends State<Home> {
                       child: Container(
                         height: 485,
                         width: 360,
-                        color: Colors.pink,
                         child: Stack(
+                          fit: StackFit.expand,
                           children: [
                             Image(
                               image: NetworkImage(Cocktails[0]['image_url']),
                               fit: BoxFit.fill,
+                            ),
+                            Positioned(
+                              bottom: 20,
+                              left: 20,
+                              child: Text(
+                                Cocktails[0]['name'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Agraham',
+                                  fontSize: 30,
+                                ),
+                              ),
                             ),
                           ],
                         ),
