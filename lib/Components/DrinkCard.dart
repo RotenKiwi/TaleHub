@@ -17,7 +17,7 @@ class DrinkCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => DrinkDetails()));
+              context, MaterialPageRoute(builder: (context) => DrinkDetails(index: index,)));
         },
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(30.0)),
