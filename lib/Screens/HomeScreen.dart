@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tale_hub/Tools/palette.dart';
 import '../Components/DayDate.dart';
 import '../Components/SurpriseMeBtn.dart';
+import '../Components/customRadioButton.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-String drink = 'cokctail';
+String drink = 'cocktail';
 
 class _HomeState extends State<Home> {
   @override
@@ -50,6 +51,7 @@ class _HomeState extends State<Home> {
                             drink = 'cocktail';
                           });
                         },
+                        group: drink,
                       ),
                       Spacer(),
                       CustomRadioButton(
@@ -60,6 +62,7 @@ class _HomeState extends State<Home> {
                             drink = 'mocktail';
                           });
                         },
+                        group: drink,
                       ),
                       Spacer(),
                     ],
@@ -78,49 +81,6 @@ class _HomeState extends State<Home> {
               ),
             )
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CustomRadioButton extends StatelessWidget {
-  final String text;
-  final String index;
-  final Function() press;
-
-  const CustomRadioButton({
-    super.key,
-    required this.text,
-    required this.index,
-    required this.press,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(25)),
-      child: InkWell(
-        child: Container(
-          decoration: BoxDecoration(
-            color: (drink == index) ? Colors.white : bgColor,
-            border: Border.all(color: Colors.white, width: 1.5),
-            borderRadius: const BorderRadius.all(Radius.circular(25)),
-          ),
-          child: TextButton(
-            onPressed: press,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
-              child: Text(
-                text,
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 20,
-                  color: (drink == index) ? bgColor : Colors.white,
-                ),
-              ),
-            ),
-          ),
         ),
       ),
     );
