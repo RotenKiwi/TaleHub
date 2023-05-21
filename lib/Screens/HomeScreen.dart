@@ -3,6 +3,7 @@ import 'package:tale_hub/Tools/palette.dart';
 import '../Components/DayDate.dart';
 import '../Components/SurpriseMeBtn.dart';
 import '../Components/customRadioButton.dart';
+import 'package:tale_hub/Supabase/SupabaseHelper.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -66,6 +67,41 @@ class _HomeState extends State<Home> {
                       ),
                       Spacer(),
                     ],
+                  ),
+                  // Wrap(
+                  //   children: [
+                  //     Container(
+                  //       child: ListView.builder(
+                  //         scrollDirection: Axis.horizontal,
+                  //           itemCount: itemCount,
+                  //           itemBuilder: (context, index) {
+                  //             return Padding(
+                  //               padding: EdgeInsets.all(8.0),
+                  //               child: Container(
+                  //                 height: 50,
+                  //                 width: 50,
+                  //                 color: Colors.pink,
+                  //               ),
+                  //             );
+                  //           }),
+                  //       height: 100,
+                  //       width: 300,
+                  //     ),
+                  //   ]
+                  // ),
+                  
+                  ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    child: Container(
+                      color: Colors.pink,
+                      child: Expanded(
+                        child: Stack(
+                          children: [
+                            Image(image: NetworkImage(Mocktails[0]['image_url'])),
+                          ],
+                        ),
+                      ),
+                    ),
                   )
                 ],
               ),

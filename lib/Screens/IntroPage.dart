@@ -1,10 +1,24 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:tale_hub/Components/RoundedButton.dart';
+import 'package:tale_hub/Screens/HomeScreen.dart';
+import 'package:tale_hub/Supabase/SupabaseHelper.dart';
 import 'LoginSignup/Login.dart';
 
-class Intro extends StatelessWidget {
+class Intro extends StatefulWidget {
   const Intro({Key? key}) : super(key: key);
+
+  @override
+  State<Intro> createState() => _IntroState();
+}
+
+class _IntroState extends State<Intro> {
+
+  @override
+  void initState() {
+    readData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +65,7 @@ class Intro extends StatelessWidget {
                 text: 'Shake Things Up',
                 press: () {
                   Navigator.pushReplacement(
-                      context, MaterialPageRoute(builder: (context) => login()));
+                      context, MaterialPageRoute(builder: (context) => Home()));
                 },
                 color: Colors.white,
                 textColor: Colors.black,

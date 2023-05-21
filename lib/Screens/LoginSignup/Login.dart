@@ -1,10 +1,15 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:supabase/supabase.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tale_hub/Components/RoundedButton.dart';
 import 'package:tale_hub/Components/formField.dart';
-
+import '../../Supabase/SupabaseHelper.dart';
 import 'SignUp.dart';
+
+final supabase = Supabase.instance.client;
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -13,7 +18,25 @@ class login extends StatefulWidget {
   State<login> createState() => _loginState();
 }
 
+String? email;
+String? password;
+
 class _loginState extends State<login> {
+  late final StreamSubscription<AuthState> _authSubscription;
+  User? _user;
+
+  @override
+  void initState() {
+    _authSubscription = supabase.auth.onAuthStateChange.listen((data) {
+      final AuthChangeEvent event = data.event;
+      final Session? session = data.session;
+      setState(() {
+        _user = session?.user;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,17 +81,23 @@ class _loginState extends State<login> {
                         textfield(
                             text: 'Email',
                             isPassword: false,
-                            onchanged: (value) {}),
+                            onchanged: (value) {
+                              email = value;
+                            }),
                         textfield(
                             text: 'Password',
                             isPassword: true,
-                            onchanged: (value) {}),
+                            onchanged: (value) {
+                              password = value;
+                            }),
                         const SizedBox(
                           height: 20,
                         ),
                         RoundedButton(
                             text: 'Continue',
-                            press: () {},
+                            press: () {
+                              var result = supabase.auth.signInWithPassword(password: password!, email: email);
+                            },
                             color: Colors.greenAccent,
                             textColor: Colors.white,
                             length: 0.9),
