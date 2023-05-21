@@ -13,7 +13,8 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-String drink = 'cocktail';
+String drink = 'mocktail';
+int itemCount = drinkCount;
 
 class _HomeState extends State<Home> {
   @override
@@ -45,42 +46,57 @@ class _HomeState extends State<Home> {
                 const SizedBox(
                   height: 45,
                 ),
-                Row(
-                  children: [
-                    Spacer(),
-                    CustomRadioButton(
-                      text: 'Cocktail',
-                      index: 'cocktail',
-                      press: () {
-                        setState(() {
-                          drink = 'cocktail';
-                        });
-                      },
-                      group: drink,
+                // Row(
+                //   children: [
+                //     Spacer(),
+                //     CustomRadioButton(
+                //       text: 'Cocktails',
+                //       index: 'cocktail',
+                //       press: () {
+                //         setState(() {
+                //           drink = 'cocktail';
+                //         });
+                //       },
+                //       group: drink,
+                //     ),
+                //     Spacer(),
+                //     CustomRadioButton(
+                //       text: 'Mocktails',
+                //       index: 'mocktail',
+                //       press: () {
+                //         setState(() {
+                //           drink = 'mocktail';
+                //         });
+                //       },
+                //       group: drink,
+                //     ),
+                //     Spacer(),
+                //   ],
+                // ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Text(
+                    'Explore the rich tapestry of captivating drinks at your fingertips',
+                    style: TextStyle(
+                      fontFamily: 'Breath',
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600
                     ),
-                    Spacer(),
-                    CustomRadioButton(
-                      text: 'Mocktail',
-                      index: 'mocktail',
-                      press: () {
-                        setState(() {
-                          drink = 'mocktail';
-                        });
-                      },
-                      group: drink,
-                    ),
-                    Spacer(),
-                  ],
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Container(
                   height: 500,
                   width: 400,
                   child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.horizontal,
-                      itemCount: 2,
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: itemCount,
                       itemBuilder: (context, index) {
-                        return DrinkCard(index: index,);
+                        return DrinkCard(
+                          index: index,
+                        );
                       }),
                 ),
               ],

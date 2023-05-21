@@ -7,7 +7,10 @@ const String token =
 
 final supabase = Supabase.instance.client;
 
-int itemCount = 0;
+int cocktailCount = 0;
+int mocktailCount = 0;
+int drinkCount =0;
+List<Map<String, dynamic>> AllDrinks = [];
 List<Map<String, dynamic>> Mocktails = [];
 List<Map<String, dynamic>> Cocktails = [];
 
@@ -15,8 +18,6 @@ Future<void> readData() async {
   List<Map<String, dynamic>> names = await supabase
       .from('Recipes')
       .select('name');
-
-  itemCount = names.length;
 
   List<Map<String, dynamic>> description = await supabase
       .from('Recipes')
@@ -26,23 +27,35 @@ Future<void> readData() async {
       .from('Recipes')
       .select('image_url');
 
+  List<Map<String, dynamic>> allDrinks = await supabase
+      .from('Recipes')
+      .select<List<Map<String, dynamic>>>();
+
+  AllDrinks = allDrinks;
+  drinkCount = allDrinks.length;
+
   List<Map<String, dynamic>> cocktails = await supabase
       .from('Recipes')
       .select<List<Map<String, dynamic>>>().eq('type', 'cocktail');
 
   Cocktails = cocktails;
+  cocktailCount = cocktails.length;
 
   List<Map<String, dynamic>> mocktails = await supabase
       .from('Recipes')
       .select<List<Map<String, dynamic>>>().eq('type', 'mocktail');
 
   Mocktails = mocktails;
+  mocktailCount = mocktails.length;
 
   //print(names.length);
   // print(description);
   // print(image_url);
   //print(Mocktails[0]['image_url']);
-   print(Cocktails);
+  //  print(allDrinks);
+  //  print(drinkCount);
+   print(allDrinks[0]['image_url']);
+  print(allDrinks[0]['name']);
   // print('----------------------------');
   // print(mocktails);
 }
