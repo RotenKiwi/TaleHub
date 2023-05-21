@@ -9,6 +9,7 @@ final supabase = Supabase.instance.client;
 
 int itemCount = 0;
 List<Map<String, dynamic>> Mocktails = [];
+List<Map<String, dynamic>> Cocktails = [];
 
 Future<void> readData() async {
   List<Map<String, dynamic>> names = await supabase
@@ -29,16 +30,18 @@ Future<void> readData() async {
       .from('Recipes')
       .select<List<Map<String, dynamic>>>().eq('type', 'cocktail');
 
+  Cocktails = cocktails;
+
   List<Map<String, dynamic>> mocktails = await supabase
       .from('Recipes')
       .select<List<Map<String, dynamic>>>().eq('type', 'mocktail');
 
   Mocktails = mocktails;
 
-  print(names.length);
+  //print(names.length);
   // print(description);
   // print(image_url);
-  print(Mocktails[0]['image_url']);
+  //print(Mocktails[0]['image_url']);
   // print(cocktails);
   // print('----------------------------');
   // print(mocktails);

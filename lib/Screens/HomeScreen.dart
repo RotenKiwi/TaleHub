@@ -35,7 +35,9 @@ class _HomeState extends State<Home> {
                     children: [
                       DayDate(day: day),
                       const Spacer(),
-                      const SurpriseMeBtn(),
+                      const SurpriseMeBtn(
+                          //Todo: Add functionality to this button
+                          ),
                     ],
                   ),
                   const SizedBox(
@@ -89,33 +91,31 @@ class _HomeState extends State<Home> {
                   //     ),
                   //   ]
                   // ),
-                  
-                  ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                    child: Container(
-                      color: Colors.pink,
-                      child: Expanded(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 45.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      child: Container(
+                        height: 485,
+                        width: 360,
+                        color: Colors.pink,
                         child: Stack(
                           children: [
-                            Image(image: NetworkImage(Mocktails[0]['image_url'])),
+                            Image(
+                              image: NetworkImage(Cocktails[0]['image_url']),
+                              fit: BoxFit.fill,
+                            ),
                           ],
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
             const Spacer(
-              flex: 15,
+              flex: 1,
             ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                width: double.infinity,
-                color: navColor,
-              ),
-            )
           ],
         ),
       ),
