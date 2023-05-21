@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:tale_hub/Components/RoundedButton.dart';
-import 'package:tale_hub/Screens/HomeScreen.dart';
+import 'LoginSignup/Login.dart';
 
 class Intro extends StatelessWidget {
   const Intro({Key? key}) : super(key: key);
@@ -51,7 +51,7 @@ class Intro extends StatelessWidget {
                 text: 'Shake Things Up',
                 press: () {
                   Navigator.pushReplacement(
-                      context, MaterialPageRoute(builder: (context) => Home()));
+                      context, MaterialPageRoute(builder: (context) => login()));
                 },
                 color: Colors.white,
                 textColor: Colors.black,
