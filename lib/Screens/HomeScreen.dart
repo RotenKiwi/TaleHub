@@ -3,7 +3,6 @@ import 'package:tale_hub/Tools/palette.dart';
 import '../Components/DayDate.dart';
 import '../Components/DrinkCard.dart';
 import '../Components/SurpriseMeBtn.dart';
-import '../Components/customRadioButton.dart';
 import 'package:tale_hub/Supabase/SupabaseHelper.dart';
 
 class Home extends StatefulWidget {
@@ -73,8 +72,8 @@ class _HomeState extends State<Home> {
                 //     Spacer(),
                 //   ],
                 // ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
+                const Padding(
+                  padding: EdgeInsets.all(5.0),
                   child: Text(
                     'Explore the rich tapestry of captivating drinks at your fingertips',
                     style: TextStyle(
@@ -86,7 +85,7 @@ class _HomeState extends State<Home> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: 500,
                   width: 400,
                   child: ListView.builder(
@@ -101,6 +100,7 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
+
             const Spacer(
               flex: 1,
             ),

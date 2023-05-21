@@ -6,6 +6,7 @@ import 'package:supabase/supabase.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tale_hub/Components/RoundedButton.dart';
 import 'package:tale_hub/Components/formField.dart';
+import 'package:tale_hub/Screens/HomeScreen.dart';
 import '../../Supabase/SupabaseHelper.dart';
 import 'SignUp.dart';
 
@@ -96,7 +97,7 @@ class _loginState extends State<login> {
                         RoundedButton(
                             text: 'Continue',
                             press: () {
-                              var result = supabase.auth.signInWithPassword(password: password!, email: email);
+                              onTapBtnSignin(password!, email!, context);
                             },
                             color: Colors.greenAccent,
                             textColor: Colors.white,
@@ -117,7 +118,12 @@ class _loginState extends State<login> {
                               textAlign: TextAlign.start,
                             ),
                             TextButton(
-                              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>signup()));},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => signup()));
+                              },
                               child: const Text(
                                 "Sign Up",
                                 style: TextStyle(
@@ -160,5 +166,18 @@ class _loginState extends State<login> {
         ),
       ),
     );
+  }
+}
+
+void onTapBtnSignin(String password, String email, BuildContext context) async {
+  final response = await Supabase.instance.client.auth.signInWithPassword(
+    email: email,
+    password: password,
+  );
+  if (response.session != null) {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Home()));
+    print('++++++++++++++++++++++++++++++++++++');
+  } else {
+    print('===================================================================');
   }
 }

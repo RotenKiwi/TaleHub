@@ -65,7 +65,7 @@ class _IntroState extends State<Intro> {
                 text: 'Shake Things Up',
                 press: () {
                   Navigator.pushReplacement(
-                      context, MaterialPageRoute(builder: (context) => Home()));
+                      context, MaterialPageRoute(builder: (context) => login()));
                 },
                 color: Colors.white,
                 textColor: Colors.black,

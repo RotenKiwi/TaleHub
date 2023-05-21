@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tale_hub/Screens/HomeScreen.dart';
 
 const String supabaseUrl = "https://yudnehytyovndwdswnfa.supabase.co";
 const String token =
@@ -47,15 +47,6 @@ Future<void> readData() async {
 
   Mocktails = mocktails;
   mocktailCount = mocktails.length;
-
-  //print(names.length);
-  // print(description);
-  // print(image_url);
-  //print(Mocktails[0]['image_url']);
-  //  print(allDrinks);
-  //  print(drinkCount);
-   print(allDrinks[0]['image_url']);
-  print(allDrinks[0]['name']);
-  // print('----------------------------');
-  // print(mocktails);
 }
+
+

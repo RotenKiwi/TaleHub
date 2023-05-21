@@ -1,8 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tale_hub/Components/RoundedButton.dart';
 import 'package:tale_hub/Components/formField.dart';
+
+import '../HomeScreen.dart';
 
 class signup extends StatefulWidget {
   const signup({Key? key}) : super(key: key);
@@ -10,6 +13,9 @@ class signup extends StatefulWidget {
   @override
   State<signup> createState() => _signupState();
 }
+
+String? email;
+String? password;
 
 class _signupState extends State<signup> {
   @override
@@ -69,11 +75,19 @@ class _signupState extends State<signup> {
                         textfield(
                             text: 'Email',
                             isPassword: false,
-                            onchanged: (value) {}),
+                            onchanged: (value) {
+                              setState(() {
+                                email = value;
+                              });
+                            }),
                         textfield(
                             text: 'Password',
                             isPassword: true,
-                            onchanged: (value) {}),
+                            onchanged: (value) {
+                              setState(() {
+                                password = value;
+                              });
+                            }),
                         const SizedBox(
                           height: 20,
                         ),
@@ -99,7 +113,9 @@ class _signupState extends State<signup> {
                         ),
                         RoundedButton(
                             text: 'Agree & Continue',
-                            press: () {},
+                            press: () {
+                              onTapBtnSignUp(password!, email!, context);
+                            },
                             color: Colors.greenAccent,
                             textColor: Colors.white,
                             length: 0.9),
@@ -129,5 +145,13 @@ class _signupState extends State<signup> {
         ),
       ),
     );
+  }
+}
+void onTapBtnSignUp(String password, String email, BuildContext context) async{
+  final response = await Supabase.instance.client.auth.signUp(password: password, email: email);
+  if(response.session!=null){
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Home()));
+  } else{
+    print('error');
   }
 }
